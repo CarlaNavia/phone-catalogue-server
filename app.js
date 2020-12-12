@@ -10,7 +10,7 @@ const cors = require("cors");
 
 //ROUTES
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var phonesRouter = require("./routes/phones");
 
 // MONGOOSE CONNECTION
 mongoose
@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //ROUTER MIDDLEWARE
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/phones", phonesRouter);
 
 //FRONTEND ROUTE
 app.use((req, res) => {
