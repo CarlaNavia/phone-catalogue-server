@@ -1,20 +1,65 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+require("dotenv").config();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const express = require("express");
+const path = require("path");
+const logger = require("morgan");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const cors = require("cors");
 
-var app = express();
+//ROUTES
+var indexRouter = require("./routes/index");
+var usersRouter = require("./routes/users");
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// MONGOOSE CONNECTION
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useUnifiedTopology: true,
+    keepAlive: true,
+    useNewUrlParser: true,
+  })
+  .then(() => console.log(`Connected to database`))
+  .catch((err) => console.error(err));
+
+const app = express();
+
+//CORS MIDDLEWARE
+app.use(
+  cors({
+    credentials: true,
+    origin: [process.env.PUBLIC_DOMAIN],
+  })
+);
+
+//MIDDLEWARE
+app.use(logger("dev"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//ROUTER MIDDLEWARE
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
+
+//FRONTEND ROUTE
+app.use((req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
+
+//ERROR HANDLING
+app.use((req, res, next) => {
+  res.status(404).json({ code: "not found" });
+});
+
+app.use((err, req, res, next) => {
+  console.error("ERROR", req.method, req.path, err);
+
+  if (!res.headersSent) {
+    const statusError = err.status || "500";
+    res.status(statusError).json(err);
+  }
+});
 
 module.exports = app;
