@@ -9,8 +9,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 //ROUTES
-var indexRouter = require("./routes/index");
-var phonesRouter = require("./routes/phones");
+const indexRouter = require("./routes/index");
+const phonesRouter = require("./routes/phones");
+const imgFileUploadRouter = require("./routes/imageFileUpload");
 
 // MONGOOSE CONNECTION
 mongoose
@@ -42,6 +43,7 @@ app.use(express.static(path.join(__dirname, "public")));
 //ROUTER MIDDLEWARE
 app.use("/", indexRouter);
 app.use("/phones", phonesRouter);
+app.use("/", imgFileUploadRouter);
 
 //FRONTEND ROUTE
 app.use((req, res) => {

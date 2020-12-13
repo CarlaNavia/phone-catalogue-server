@@ -7,7 +7,7 @@ const phoneSchema = new Schema({
         description: { type: String, required: true},
         color: { type: String, required: true},
         price: { type: Number, required: true},
-        imageFileName: { type: String },
+        imageFileUrl: { type: String },
         screen: { type: String, required: true},
         processor: { type: String, required: true},
         ram:{ type: Number, required: true},
