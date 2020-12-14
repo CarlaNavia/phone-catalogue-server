@@ -36,21 +36,32 @@ router.post("/new", (req, res, next) => {
 });
 
 //GET a phone
-router.get("/:id", (req, res, next) => {
-  Phone.findById(req.params.id)
-  .then((thePhone) => {
-    res.json(thePhone);
-  })
-  .catch((err) => {
-    res.json(err);
-  });
-})
+router.get("/:phoneId", (req, res, next) => {
+  Phone.findById(req.params.phoneId)
+    .then((thePhone) => {
+      res.json(thePhone);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
 
 //DELETE a phone
 router.delete("/:id", (req, res, next) => {
   Phone.findByIdAndRemove(req.params.id)
     .then((onePhone) => {
       res.redirect("/");
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
+//PUT edit phone
+router.put("/:id", (req, res, next) => {
+  Phone.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then((editedPhone) => {
+      res.json(editedPhone);
     })
     .catch((err) => {
       res.json(err);
