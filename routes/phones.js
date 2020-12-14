@@ -35,4 +35,26 @@ router.post("/new", (req, res, next) => {
     });
 });
 
+//GET a phone
+router.get("/:id", (req, res, next) => {
+  Phone.findById(req.params.id)
+  .then((thePhone) => {
+    res.json(thePhone);
+  })
+  .catch((err) => {
+    res.json(err);
+  });
+})
+
+//DELETE a phone
+router.delete("/:id", (req, res, next) => {
+  Phone.findByIdAndRemove(req.params.id)
+    .then((onePhone) => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 module.exports = router;
