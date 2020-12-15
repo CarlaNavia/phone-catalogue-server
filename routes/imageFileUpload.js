@@ -11,10 +11,9 @@ router.post(
       next(new Error("No file uploaded!"));
       return;
     }
-
     const phoneImage = await Phone.findByIdAndUpdate(
       req.params.phoneId,
-      { imageFileUrl: req.file.secure_url },
+      { imageFileUrl: req.file.path },
       { new: true }
     );
 
