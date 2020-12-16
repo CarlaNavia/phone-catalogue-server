@@ -1,10 +1,13 @@
 const mongoose = require("mongoose");
 const Phone = require("../models/Phone");
 
-mongoose.connect(`mongodb://localhost:27017/phone-catalogue`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  `mongodb+srv://phone-catalogue:DWMigZZemGJVHKUx@cluster0.mb08c.mongodb.net/phone-catalogue?retryWrites=true&w=majority`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 const phone = [
   {
@@ -15,7 +18,7 @@ const phone = [
     color: "Silver",
     price: 809,
     imageFileUrl:
-      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/refurb-iphone8-silver?wid=1144&hei=1144&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1573770039552",
+      "https://res.cloudinary.com/dfzng0uyk/image/upload/v1608140853/phone-catalogue/Captura%20de%20pantalla%202020-12-16%20a%20las%2018.png",
     screen: "4,7″",
     processor: "A11 Bionic",
     ram: 64,
@@ -28,7 +31,7 @@ const phone = [
     color: "Pacific Blue",
     price: 1510,
     imageFileUrl:
-      "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&amp;hei=1112&amp;fmt=jpeg&amp;qlt=80&amp;op_usm=0.5,0.5&amp;.v=1604021663000",
+      "https://res.cloudinary.com/dfzng0uyk/image/upload/v1608140803/phone-catalogue/Captura%20de%20pantalla%202020-12-16%20a%20las%2018.png",
     screen: "6.1” Super Retina XDR display",
     processor: "A14 Bionic",
     ram: 128,
@@ -41,7 +44,7 @@ const phone = [
     color: "Green",
     price: 180,
     imageFileUrl:
-      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.xatakandroid.com%2Fmoviles-android%2Fxiaomi-redmi-9-caracteristicas-precio-ficha-tecnica&psig=AOvVaw2mxd09phHL15iHq4huecBl&ust=1607852704483000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJi02JqUyO0CFQAAAAAdAAAAABAE",
+      "https://res.cloudinary.com/dfzng0uyk/image/upload/v1608140554/phone-catalogue/Captura%20de%20pantalla%202020-12-16%20a%20las%2018.png",
     screen:
       "6,53'' (16,58 cm), FHD+ (2340 x 1080), 400 nit, Corning Gorilla Glass 3",
     processor: "Media Tek Helio G80 Octa-Core, GPU: Mali-G52 MC2, 950 MHz",
@@ -55,7 +58,7 @@ const phone = [
     color: "Violet",
     price: 830,
     imageFileUrl:
-      "https://j2m3x7c3.stackpathcdn.com/wp-content/uploads/2020/02/Comprar-Samsung-Galaxy-S20-en-Costa-Rica.jpg",
+      "https://res.cloudinary.com/dfzng0uyk/image/upload/v1608140448/phone-catalogue/Captura%20de%20pantalla%202020-12-16%20a%20las%2018.png",
     screen:
       "6,5'' (16,51 cm), FHD+ ( 1080x2400) Super AMOLED 2X Infinity O Display",
     processor: "Android 10",
@@ -69,7 +72,7 @@ const phone = [
     color: "Black",
     price: 250,
     imageFileUrl:
-      "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftiendaonline.orange.es%2Fver-dispositivo%2Fhuawei%2Fp-smart-2021-negro&psig=AOvVaw2dkh8SHPNYcp41D_MhfOu4&ust=1607853235651000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPD19ZeWyO0CFQAAAAAdAAAAABAE",
+      "https://res.cloudinary.com/dfzng0uyk/image/upload/v1608140681/phone-catalogue/Captura%20de%20pantalla%202020-12-16%20a%20las%2018.png",
     screen: "6,67'' (16,94 cm), TFT LCD IPS (2400 x 1080px)",
     processor: "Android 10, EMUI 10.1",
     ram: 128,
