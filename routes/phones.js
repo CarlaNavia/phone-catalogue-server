@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 const Phone = require("../models/Phone");
 
 // GET phones listing
